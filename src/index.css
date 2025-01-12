@@ -57,7 +57,7 @@ button:hover {
   border-width: 3px;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
     background-color: #ffffff;
@@ -68,4 +68,38 @@ button:hover {
   button {
     background-color: #f9f9f9;
   }
+}
+
+#card{
+  width: 300px;
+  height: 550px;
+  position: relative;
+  cursor: pointer;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+#card #front{
+  background-color: #213547;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  backface-visibility: hidden;
+}
+
+#card #back{
+  background-color: #46627a;
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform: rotateY(180deg);
+}
+
+#card.active{
+  transform: perspective(800px) rotateY(180deg)
 }
