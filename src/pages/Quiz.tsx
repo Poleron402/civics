@@ -6,18 +6,24 @@ import { Question } from "../types";
 const Quiz = () =>{
     const [testStart, setTestStart] = useState<boolean>(false);
     const [questions, setQuestions] = useState<Question[]>([]);
-    let [questionCounter, setQuestionCounter] = useState<number>(0);
     let [score, setScore] = useState<number>(0);
 
-
+    
     // console.log(data)
     let {state} = useParams()
 
     const getQuestionsAndAnswers = () =>{
-        const randoms = [Math.floor(Math.random()*10)]
-        randoms.forEach(element => {
-            setQuestions([...questions, data[element]])
-        });
+        if (questions.length !== 10){
+            const randoms:number[] = [];
+            while (randoms.length < 10) {
+            const randomNum = Math.floor(Math.random() * 10);
+                if (!randoms.includes(randomNum)) {
+                    randoms.push(randomNum);
+                }
+            }
+            let selected=randoms.map(element => data[element]);
+            setQuestions(selected);
+        }
     }
     useEffect(()=>{
         getQuestionsAndAnswers()
@@ -32,7 +38,7 @@ const Quiz = () =>{
             :
             (
                 <>
-                    <Card score={score} setScore={setScore} question={questions[questionCounter]} />
+                    <Card score={score} setScore={setScore} question={questions} />
                     <p className="pt-6">Score: {score} (6 to pass)</p>
                 </>
             )
