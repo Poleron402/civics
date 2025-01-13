@@ -1,4 +1,3 @@
-import ReactDOM from "react-dom/client";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import StartingPage from './pages/StartingPage'
 import Quiz from "./pages/Quiz";
