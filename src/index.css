@@ -71,15 +71,23 @@ button:hover {
 }
 
 #card{
+  border-radius: 10px;
+  margin-top: 100px;
   width: 300px;
   height: 550px;
   position: relative;
   cursor: pointer;
   transition: transform 1s;
   transform-style: preserve-3d;
+  
+  /* box-shadow: 0px 3px 24px #729cb8; */
 }
 
 #card #front{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 10px;
   background-color: #213547;
   position: absolute;
   height: 100%;
@@ -91,6 +99,8 @@ button:hover {
 }
 
 #card #back{
+
+  border-radius: 10px;
   background-color: #46627a;
   height: 100%;
   width: 100%;
