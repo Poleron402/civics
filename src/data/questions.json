@@ -137,7 +137,7 @@
         ]
     },
     {
-        "question": "20. Who is one of your state\u2019s U.S. Senators now?*",
+        "question": "20. Who is one of your state's U.S. Senators now?*",
         "answers": [
             "Answers will vary. [District of Columbia residents and residents of U.S. territories should answer that D.C."
         ]
@@ -169,7 +169,7 @@
     {
         "question": "25. Why do some states have more Representatives than other states?",
         "answers": [
-            "(because of) the state\u2019s population",
+            "(because of) the state's population",
             "(because) they have more people",
             "(because) some states have more people"
         ]
@@ -229,7 +229,7 @@
         ]
     },
     {
-        "question": "35. What does the President\u2019s Cabinet do?",
+        "question": "35. What does the President's Cabinet do?",
         "answers": [
             "advises the President"
         ]
@@ -284,7 +284,12 @@
     },
     {
         "question": "41. Under our Constitution, some powers belong to the federal government. What is one power of the federal",
-        "answers": []
+        "answers": [
+            "to print money",
+            "to declare war",
+            "to create an army",
+            "to make treaties"
+        ]
     },
     {
         "question": "42. Under our Constitution, some powers belong to the states. What is one power of the states?",
@@ -292,7 +297,7 @@
             "provide schooling and education",
             "provide protection (police)",
             "provide safety (fire departments)",
-            "give a driver\u2019s license",
+            "give a driver's license",
             "approve zoning and land use"
         ]
     },
@@ -330,7 +335,7 @@
         "question": "48. There are four amendments to the Constitution about who can vote. Describe one of them.",
         "answers": [
             "Citizens eighteen (18) and older (can vote).",
-            "You don\u2019t have to pay (a poll tax) to vote.",
+            "You don't have to pay (a poll tax) to vote.",
             "Any citizen can vote. (Women and men can vote.)",
             "A male citizen of any race (can vote)."
         ]
@@ -442,7 +447,7 @@
         "answers": [
             "because of high taxes (taxation without representation)",
             "because the British army stayed in their houses (boarding, quartering)",
-            "because they didn\u2019t have self-government"
+            "because they didn't have self-government"
         ]
     },
     {
@@ -503,7 +508,7 @@
             "U.S. diplomat",
             "oldest member of the Constitutional Convention",
             "first Postmaster General of the United States",
-            "writer of \u201cPoor Richard\u2019s Almanac\u201d",
+            "writer of \u201cPoor Richard's Almanac\u201d",
             "started the first free libraries"
         ]
     },
@@ -547,7 +552,7 @@
         "answers": [
             "slavery",
             "economic reasons",
-            "states\u2019 rights"
+            "states' rights"
         ]
     },
     {
@@ -570,7 +575,7 @@
     {
         "question": "77. What did Susan B. Anthony do?",
         "answers": [
-            "fought for women\u2019s rights",
+            "fought for women's rights",
             "fought for civil rights"
         ]
     },
@@ -635,7 +640,30 @@
     },
     {
         "question": "87. Name one American Indian tribe in the United States.",
-        "answers": []
+        "answers": [
+            "Cherokee",
+            "Navajo",
+            "Sioux",
+            "Chippewa",
+            "Choctaw",
+            "Pueblo",
+            "Apache",
+            "Iroquois",
+            "Creek",
+            "Blackfeet",
+            "Seminole",
+            "Cheyenne",
+            "Arawak",
+            "Shawnee",
+            "Mohegan",
+            "Huron",
+            "Oneida",
+            "Lakota",
+            "Crow",
+            "Teton",
+            "Hopi",
+            "Inuit"
+        ]
     },
     {
         "question": "88. Name one of the two longest rivers in the United States.",
@@ -736,9 +764,9 @@
     {
         "question": "100. Name two national U.S. holidays.",
         "answers": [
-            "New Year\u2019s Day",
+            "New Year's Day",
             "Martin Luther King, Jr. Day",
-            "Presidents\u2019 Day",
+            "Presidents' Day",
             "Memorial Day",
             "Independence Day",
             "Labor Day",

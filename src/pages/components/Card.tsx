@@ -29,8 +29,8 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question})=>{
                 <div id='front' onClick={()=>{
                     setTempHidden(false)
                     setIsActive(true)}}>
-                    <div id='content'>
-                        {question[questionCounter].question}
+                    <div id='content' >
+                        <p className="text-center">{question[questionCounter].question}</p>
                     </div>
                 </div>
                 <div id='back' onClick={()=>setIsActive(false)}>
@@ -59,14 +59,13 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question})=>{
             }
         </>
         ):(
-            <>
+            <div className="pt-10 flex flex-col justify-center items-center">
                 {score>=6?
-                    <h1>Congrats</h1>
+                    <h1 className="">Congrats!  🇺🇸</h1>
                 :
-                    <h1>Sucker</h1>
-                
+                    <h1>Not quite... 😭</h1>
                 }
-            </>
+            </div>
         )
     }
     </>
