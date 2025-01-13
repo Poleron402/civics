@@ -16,7 +16,7 @@ const Quiz = () =>{
         if (questions.length !== 10){
             const randoms:number[] = [];
             while (randoms.length < 10) {
-            const randomNum = Math.floor(Math.random() * 10);
+            const randomNum = Math.floor(Math.random() * 99);
                 if (!randoms.includes(randomNum)) {
                     randoms.push(randomNum);
                 }

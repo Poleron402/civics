@@ -59,14 +59,14 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question})=>{
             }
         </>
         ):(
-            <>
+            <div className="mt-50 flex-col justify-center items-center h-full">
                 {score>=6?
-                    <h1>Congrats</h1>
+                    <h1>Congrats!</h1>
                 :
-                    <h1>Sucker</h1>
+                    <h1>Not quite...</h1>
                 
                 }
-            </>
+            </div>
         )
     }
     </>
