@@ -3,7 +3,6 @@ import StartingPage from './pages/StartingPage'
 import Quiz from "./pages/Quiz";
 import './index.css'
 function App() {
-
   return (
     <HashRouter >
       <Routes>
