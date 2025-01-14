@@ -5,10 +5,10 @@ import './index.css'
 function App() {
 
   return (
-    <BrowserRouter basename="https://Poleron402.github.io/civics">
+    <BrowserRouter >
       <Routes>
-        <Route path="/" element={<StartingPage/>}/>
-        <Route path="quiz/:state/" element={<Quiz/>}/>
+        <Route path="/civics/" element={<StartingPage/>}/>
+        <Route path="/civics/quiz/:state/" element={<Quiz/>}/>
       </Routes>
     </BrowserRouter>
   )
