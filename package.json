@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": ".",
+  "homepage": "https://Poleron402.github.io/civics",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
