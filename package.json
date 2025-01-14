@@ -5,6 +5,7 @@
   "type": "module",
   "homepage": "https://Poleron402.github.io/civics",
   "scripts": {
+    "start": "serve -s build",
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
