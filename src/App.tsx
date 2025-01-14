@@ -4,12 +4,12 @@ import Quiz from "./pages/Quiz";
 import './index.css'
 function App() {
   return (
-    <HashRouter >
+    // <HashRouter >
       <Routes>
         <Route path="/civics/" element={<StartingPage/>}/>
         <Route path="/civics/quiz/:state/" element={<Quiz/>}/>
       </Routes>
-    </HashRouter>
+    // </HashRouter>
   )
 }
 
