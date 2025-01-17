@@ -7,13 +7,13 @@ const Quiz = () =>{
     const [testStart, setTestStart] = useState<boolean>(false);
     const [questions, setQuestions] = useState<Question[]>([]);
     let [score, setScore] = useState<number>(0);
-
+    let [newSet, setNewSet] = useState<boolean>(false);
     
     // console.log(data)
     let {state} = useParams()
 
     const getQuestionsAndAnswers = () =>{
-        if (questions.length !== 10){
+        if (questions.length !== 10 || newSet){
             const randoms:number[] = [];
             while (randoms.length < 10) {
             const randomNum = Math.floor(Math.random() * 99);
@@ -38,6 +38,11 @@ const Quiz = () =>{
             :
             (
                 <>
+                    <button className="mt-10 hover:bg-red-800" onClick = {()=>{
+                        setNewSet(true)
+                        setScore(0)
+                        getQuestionsAndAnswers()
+                        }}>New Set</button>
                     <Card score={score} setScore={setScore} question={questions} />
                     <p className="pt-6">Score: {score} (6 to pass)</p>
                 </>
