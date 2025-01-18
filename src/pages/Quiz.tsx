@@ -43,7 +43,7 @@ const Quiz = () =>{
                         setScore(0)
                         getQuestionsAndAnswers()
                         }}>New Set</button>
-                    <Card score={score} setScore={setScore} question={questions} />
+                    <Card score={score} setScore={setScore} question={questions} newSet={newSet} setNewSet={setNewSet}/>
                     <p className="pt-6">Score: {score} (6 to pass)</p>
                 </>
             )

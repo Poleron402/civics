@@ -1,13 +1,15 @@
 import { Check, X } from "lucide-react"
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Question } from "../../types";
 
 interface ScoreProps{
     score: number;
     setScore: React.Dispatch<React.SetStateAction<number>>;
+    newSet: boolean,
+    setNewSet: React.Dispatch<React.SetStateAction<boolean>>
     question: Question[];
 }
-const Card: React.FC<ScoreProps> = ({score, setScore, question})=>{
+const Card: React.FC<ScoreProps> = ({score, setScore, question, newSet, setNewSet})=>{
     const [isActive, setIsActive] = useState<boolean>(false);
     let [questionCounter, setQuestionCounter] = useState<number>(0);
     let [tempHidden, setTempHidden] = useState<boolean>(false);
@@ -20,6 +22,13 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question})=>{
             setQuestionCounter(questionCounter + 1); // Increment the question counter
           }, 300);
     }
+    useEffect(()=>{
+        if(newSet){
+            console.log('Im here')
+            setQuestionCounter(0)
+            setScore(0)
+        }
+    }, [newSet])
 
     return (
         <>
