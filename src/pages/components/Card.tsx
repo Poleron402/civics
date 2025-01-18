@@ -5,13 +5,13 @@ import { Question } from "../../types";
 interface ScoreProps{
     score: number;
     setScore: React.Dispatch<React.SetStateAction<number>>;
-    newSet: boolean,
-    setNewSet: React.Dispatch<React.SetStateAction<boolean>>
+    questionCounter: number,
+    setQuestionCounter: React.Dispatch<React.SetStateAction<number>>
     question: Question[];
 }
-const Card: React.FC<ScoreProps> = ({score, setScore, question, newSet, setNewSet})=>{
+const Card: React.FC<ScoreProps> = ({score, setScore, question, questionCounter, setQuestionCounter})=>{
     const [isActive, setIsActive] = useState<boolean>(false);
-    let [questionCounter, setQuestionCounter] = useState<number>(0);
+    // let [questionCounter, setQuestionCounter] = useState<number>(0);
     let [tempHidden, setTempHidden] = useState<boolean>(false);
 
     const handleAnswer = (correct: boolean)=>{
@@ -22,17 +22,8 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question, newSet, setNewSe
             setQuestionCounter(questionCounter + 1); // Increment the question counter
           }, 300);
     }
-    useEffect(()=>{
-        if(newSet){
-            console.log('Im here')
-            setQuestionCounter(0)
-            setScore(0)
-        }
-    }, [newSet])
 
     return (
-        <>
-        {questionCounter<=9?(
         <>
             <div id='card' className={isActive ? 'active' : ''}>
                 <div id='front' onClick={()=>{
@@ -67,17 +58,6 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question, newSet, setNewSe
             </div>
             }
         </>
-        ):(
-            <div className="pt-10 flex flex-col justify-center items-center">
-                {score>=6?
-                    <h1 className="">Congrats!  🇺🇸</h1>
-                :
-                    <h1>Not quite.</h1>
-                }
-            </div>
-        )
-    }
-    </>
     )
 }
 

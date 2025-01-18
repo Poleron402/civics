@@ -6,6 +6,7 @@ import { Question } from "../types";
 const Quiz = () =>{
     const [testStart, setTestStart] = useState<boolean>(false);
     const [questions, setQuestions] = useState<Question[]>([]);
+    let [questionCounter, setQuestionCounter] = useState<number>(0);
     let [score, setScore] = useState<number>(0);
     let [newSet, setNewSet] = useState<boolean>(false);
     
@@ -26,6 +27,12 @@ const Quiz = () =>{
         }
     }
     useEffect(()=>{
+        if (newSet) {
+            getQuestionsAndAnswers();
+            setNewSet(false); // Reset the flag after generating questions
+        }
+    }, [newSet])
+    useEffect(()=>{
         getQuestionsAndAnswers()
     }, [])
     return (
@@ -39,11 +46,25 @@ const Quiz = () =>{
             (
                 <>
                     <button className="mt-10 hover:bg-red-800" onClick = {()=>{
-                        setNewSet(true)
-                        setScore(0)
-                        getQuestionsAndAnswers()
+                        setNewSet(true);
+                        setScore(0);
+                        setQuestionCounter(0);
                         }}>New Set</button>
-                    <Card score={score} setScore={setScore} question={questions} newSet={newSet} setNewSet={setNewSet}/>
+                    {
+                       questionCounter<=9? (
+                        <Card score={score} setScore={setScore} question={questions} questionCounter={questionCounter} setQuestionCounter={setQuestionCounter}/>
+                       ):
+                       (
+                        <div className="pt-10 flex flex-col justify-center items-center">
+                            {score>=6?
+                                <h1 className="">Congrats!  🇺🇸</h1>
+                            :
+                                <h1>Not quite.</h1>
+                            }
+                        </div>
+
+                       )
+                    }
                     <p className="pt-6">Score: {score} (6 to pass)</p>
                 </>
             )
