@@ -63,7 +63,7 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question})=>{
                 {score>=6?
                     <h1 className="">Congrats!  🇺🇸</h1>
                 :
-                    <h1>Not quite... 😭</h1>
+                    <h1>Not quite.</h1>
                 }
             </div>
         )
