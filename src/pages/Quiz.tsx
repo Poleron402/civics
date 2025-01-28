@@ -99,7 +99,7 @@ const Quiz = () =>{
 
                        )
                     }
-                    <p className="pt-6">Score: {score}/10 (6 to pass)</p>
+                    <p className="pt-6">Score: {score}/{questions.length} (6 to pass)</p>
                 </>
             )
             }
