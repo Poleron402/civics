@@ -63,14 +63,15 @@ const Quiz = () =>{
             :
             (
                 <>
-                    <button className="mt-10 hover:bg-red-800" onClick = {()=>{
+                    <button className="mt-10 hover:bg-slate-600" onClick = {()=>{
+                        setDoBad(false)
                         setNewSet(true);
                         setScore(0);
                         setQuestionCounter(0);
                         }}>New Set</button>
                     {badQuestions.length > 0 ?
                         <>
-                        <button className="mt-10 hover:bg-red-800 ml-5" onClick = {()=>{
+                        <button className="mt-10 hover:bg-red-900 ml-5" onClick = {()=>{
                             setDoBad(true)
                             setNewSet(true);
                             setScore(0);
@@ -79,18 +80,18 @@ const Quiz = () =>{
                         </>
                         :
                         <>
-                            <p>Weak questions will be practiced once there are more than 10.</p>
+                            <p className="mt-5">Weak questions will be practiced once there are more than 1.</p>
                             
                         </>
                     }
-                    <p>Current Weak counter: {badQuestions.length}/10</p>
+                    <p className="mt-5">Current Weak counter: {badQuestions.length}/10</p>
                     {
-                       questionCounter<=9? (
-                        <Card score={score} setScore={setScore} question={questions} questionCounter={questionCounter} setQuestionCounter={setQuestionCounter} setBadQuestions = {setBadQuestions} badQuestions={badQuestions}/>
+                       (questionCounter<=9&& !doBad) || (questionCounter<questions.length &&doBad)? (
+                        <Card score={score} setScore={setScore} question={questions} questionCounter={questionCounter} setQuestionCounter={setQuestionCounter} setBadQuestions = {setBadQuestions} badQuestions={badQuestions} doBad = {doBad}/>
                        ):
                        (
-                        <div className="pt-10 flex flex-col justify-center items-center">
-                            {score>=6?
+                        <div className="pt-55 flex flex-col justify-center items-center">
+                            {(score>=6 && !doBad) || (score>=questions.length &&doBad)?
                                 <h1 className="">Congrats!  🇺🇸</h1>
                             :
                                 <h1>Not quite.</h1>

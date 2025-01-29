@@ -10,10 +10,10 @@ interface ScoreProps{
     question: Question[];
     setBadQuestions: React.Dispatch<React.SetStateAction<Question[]>>;
     badQuestions: Question[];
+    doBad: boolean;
 }
-const Card: React.FC<ScoreProps> = ({score, setScore, question, questionCounter, setQuestionCounter, setBadQuestions, badQuestions})=>{
+const Card: React.FC<ScoreProps> = ({score, setScore, question, questionCounter, setQuestionCounter, setBadQuestions, badQuestions, doBad})=>{
     const [isActive, setIsActive] = useState<boolean>(false);
-
     let [tempHidden, setTempHidden] = useState<boolean>(false);
 
     const handleAnswer = (correct: boolean)=>{
@@ -35,6 +35,9 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question, questionCounter,
         }
         
         console.log(badQuestions)
+    }
+    const removeBadQuestions = (q: Question) =>{
+        setBadQuestions(badQuestions.filter(question => question !== q))
     }
     useEffect(()=>{
         localStorage.setItem('myBadQuestions', JSON.stringify(badQuestions))
@@ -70,18 +73,24 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question, questionCounter,
                 </div>
                     
                     <div className="flex">
-                    <button  className="correct_options" onClick={()=>{
+                    <button  className="correct_options hover:bg-green-700" onClick={()=>{
                         handleAnswer(true)
                         }}>Yes</button>
-                    <button className="correct_options" onClick={()=>{
+                    <button className="correct_options hover:bg-red-700" onClick={()=>{
                         handleAnswer(false)
                         }}>No</button>
                    
                     </div>                    
             </div>
-              <button className = "mt-5" onClick={()=>{
+            {!doBad?
+            <button className = "mt-5" onClick={()=>{
                 handleBadQuestions(question[questionCounter])
                 }}>Add To Weak</button>
+            :
+            <button className = "mt-5" onClick={()=>{
+                removeBadQuestions(question[questionCounter])
+                }}>Remove From Weak</button>
+            }
                 </>
             }
 
