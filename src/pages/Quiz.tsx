@@ -6,6 +6,11 @@ import { Question } from "../types";
 const Quiz = () =>{
     const [testStart, setTestStart] = useState<boolean>(false);
     const [questions, setQuestions] = useState<Question[]>([]);
+    let [badQuestions, setBadQuestions] = useState<Question[]>(()=>{
+        const storedBadQuestions = localStorage.getItem('myBadQuestions')
+        return storedBadQuestions? JSON.parse(storedBadQuestions): []
+    });
+    let [doBad, setDoBad] = useState<boolean>(false)
     let [questionCounter, setQuestionCounter] = useState<number>(0);
     let [score, setScore] = useState<number>(0);
     let [newSet, setNewSet] = useState<boolean>(false);
@@ -14,19 +19,32 @@ const Quiz = () =>{
     let {state} = useParams()
 
     const getQuestionsAndAnswers = () =>{
-        if (questions.length !== 10 || newSet){
+        if (questions.length !== 10 || newSet || !doBad){
             const randoms:number[] = [];
             while (randoms.length < 10) {
             const randomNum = Math.floor(Math.random() * 99);
-                if (!randoms.includes(randomNum)) {
+                if (!randoms.includes(randomNum) && badQuestions.indexOf(data[randomNum])==-1) {
                     randoms.push(randomNum);
                 }
             }
             let selected=randoms.map(element => data[element]);
             setQuestions(selected);
         }
+        if(doBad){
+            const randoms:number[] = [];
+            while (randoms.length < badQuestions.length) {
+            const randomNum = Math.floor(Math.random() * badQuestions.length);
+                if (!randoms.includes(randomNum)) {
+                    randoms.push(randomNum);
+                }
+            }
+            let selected=randoms.map(element => badQuestions[element]);
+            setQuestions(selected);
+
+        }
     }
     useEffect(()=>{
+
         if (newSet) {
             getQuestionsAndAnswers();
             setNewSet(false); // Reset the flag after generating questions
@@ -45,18 +63,35 @@ const Quiz = () =>{
             :
             (
                 <>
-                    <button className="mt-10 hover:bg-red-800" onClick = {()=>{
+                    <button className="mt-10 hover:bg-slate-600" onClick = {()=>{
+                        setDoBad(false)
                         setNewSet(true);
                         setScore(0);
                         setQuestionCounter(0);
                         }}>New Set</button>
+                    {badQuestions.length > 0 ?
+                        <>
+                        <button className="mt-10 hover:bg-red-900 ml-5" onClick = {()=>{
+                            setDoBad(true)
+                            setNewSet(true);
+                            setScore(0);
+                            setQuestionCounter(0);
+                            }}>Practice Weak</button>
+                        </>
+                        :
+                        <>
+                            <p className="mt-5">Weak questions will be practiced once there are more than 1.</p>
+                            
+                        </>
+                    }
+                    <p className="mt-5">Current Weak counter: {badQuestions.length}/10</p>
                     {
-                       questionCounter<=9? (
-                        <Card score={score} setScore={setScore} question={questions} questionCounter={questionCounter} setQuestionCounter={setQuestionCounter}/>
+                       (questionCounter<=9&& !doBad) || (questionCounter<questions.length &&doBad)? (
+                        <Card score={score} setScore={setScore} question={questions} questionCounter={questionCounter} setQuestionCounter={setQuestionCounter} setBadQuestions = {setBadQuestions} badQuestions={badQuestions} doBad = {doBad}/>
                        ):
                        (
-                        <div className="pt-10 flex flex-col justify-center items-center">
-                            {score>=6?
+                        <div className="pt-55 flex flex-col justify-center items-center">
+                            {(score>=6 && !doBad) || (score>=questions.length &&doBad)?
                                 <h1 className="">Congrats!  🇺🇸</h1>
                             :
                                 <h1>Not quite.</h1>
@@ -65,7 +100,7 @@ const Quiz = () =>{
 
                        )
                     }
-                    <p className="pt-6">Score: {score} (6 to pass)</p>
+                    <p className="pt-6">Score: {score}/{questions.length} (6 to pass)</p>
                 </>
             )
             }

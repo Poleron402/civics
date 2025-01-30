@@ -72,7 +72,7 @@ button:hover {
 
 #card{
   border-radius: 10px;
-  margin-top: 100px;
+  margin-top: 50px;
   width: 300px;
   height: 550px;
   position: relative;
@@ -82,7 +82,12 @@ button:hover {
   
   /* box-shadow: 0px 3px 24px #729cb8; */
 }
-
+#front, #back{
+  border: 3px solid black;
+}
+#content{
+  overflow-x: inherit;
+}
 #card #front{
   display: flex;
   align-items: center;
@@ -111,4 +116,9 @@ button:hover {
 
 #card.active{
   transform: perspective(800px) rotateY(180deg)
+}
+
+.correct_options{
+  width: 70px;
+  margin-inline: 10px;
 }
