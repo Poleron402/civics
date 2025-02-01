@@ -1,4 +1,3 @@
-import { Check, X } from "lucide-react"
 import {useEffect, useState } from "react";
 import { Question } from "../../types";
 
