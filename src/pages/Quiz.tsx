@@ -14,21 +14,25 @@ const Quiz = () =>{
     let [questionCounter, setQuestionCounter] = useState<number>(0);
     let [score, setScore] = useState<number>(0);
     let [newSet, setNewSet] = useState<boolean>(false);
-    
+    let [doFull, setDoFull] = useState<boolean>(false)
     // console.log(data)
     let {state} = useParams()
 
     const getQuestionsAndAnswers = () =>{
-        if (questions.length !== 10 || newSet || !doBad){
-            const randoms:number[] = [];
-            while (randoms.length < 10) {
-            const randomNum = Math.floor(Math.random() * 99);
-                if (!randoms.includes(randomNum) && badQuestions.indexOf(data[randomNum])==-1) {
-                    randoms.push(randomNum);
+        if (!doFull){
+            if (questions.length !== 10 || newSet || !doBad){
+                const randoms:number[] = [];
+                while (randoms.length < 10) {
+                const randomNum = Math.floor(Math.random() * 99);
+                    if (!randoms.includes(randomNum) && badQuestions.indexOf(data[randomNum])==-1) {
+                        randoms.push(randomNum);
+                    }
                 }
+                let selected=randoms.map(element => data[element]);
+                setQuestions(selected);
             }
-            let selected=randoms.map(element => data[element]);
-            setQuestions(selected);
+        }else{
+            setQuestions(data)
         }
         if(doBad){
             const randoms:number[] = [];
@@ -69,6 +73,7 @@ const Quiz = () =>{
                         setScore(0);
                         setQuestionCounter(0);
                         }}>New Set</button>
+                    
                     {badQuestions.length > 0 ?
                         <>
                         <button className="mt-10 hover:bg-red-900 ml-5" onClick = {()=>{
@@ -84,6 +89,13 @@ const Quiz = () =>{
                             
                         </>
                     }
+                    <button className="mt-10 hover:bg-green-600" onClick = {()=>{
+                        setDoBad(false)
+                        setNewSet(true);
+                        setScore(0);
+                        setDoFull(true);
+                        setQuestionCounter(0);
+                        }}>Practice Full Set</button>
                     <p className="mt-5">Current Weak counter: {badQuestions.length}/10</p>
                     {
                        (questionCounter<=9&& !doBad) || (questionCounter<questions.length &&doBad)? (
