@@ -60,8 +60,8 @@ const Quiz = () =>{
     return (
         <>
         <div className="flex-col w-full  justify-items-center">
-            <h2 className="text-3xl pt-10">Hi there in {state}</h2>
-            <p className="text-sm border-b border-gray-300">*State adjusted answers are in the works*</p>
+            <h2 className="text-4xl pt-10">Hi there in {state}</h2>
+            <p className="text-med border-b border-gray-300">*State adjusted answers are in the works*</p>
             {!testStart ?
                 <button className="mt-10 hover:bg-red-800" onClick = {()=>setTestStart(true)}>Begin Learning</button>
             :
@@ -89,16 +89,16 @@ const Quiz = () =>{
                             
                         </>
                     }
-                    <button className="mt-10 hover:bg-green-600" onClick = {()=>{
+                    <button className="mt-10 hover:bg-green-600 ml-5" onClick = {()=>{
                         setDoBad(false)
                         setNewSet(true);
                         setScore(0);
                         setDoFull(true);
                         setQuestionCounter(0);
                         }}>Practice Full Set</button>
-                    <p className="mt-5">Current Weak counter: {badQuestions.length}/10</p>
+                    <p className="mt-5 text-xl">Current Weak counter: {badQuestions.length}/10</p>
                     {
-                       (questionCounter<=9&& !doBad) || (questionCounter<questions.length &&doBad)? (
+                       (questionCounter<=9&& !doBad) || (questionCounter<questions.length &&doBad) || (questionCounter<questions.length && doFull)? (
                         <Card score={score} setScore={setScore} question={questions} questionCounter={questionCounter} setQuestionCounter={setQuestionCounter} setBadQuestions = {setBadQuestions} badQuestions={badQuestions} doBad = {doBad}/>
                        ):
                        (

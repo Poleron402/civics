@@ -1,15 +1,15 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Roboto', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: rgba(0, 0, 0, 0.87);
+  background: rgb(170,179,212);
+  background: linear-gradient(180deg, rgba(170,179,212,1) 0%, rgba(213,219,240,1) 39%, rgba(213,219,240,1) 100%);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -46,7 +46,8 @@ button {
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background-color: #36383a;
+  color: white;
   cursor: pointer;
   box-sizing: border-box;
   transition: background-color 0.25s;
@@ -80,20 +81,21 @@ button:hover {
   transition: transform 1s;
   transform-style: preserve-3d;
   
-  /* box-shadow: 0px 3px 24px #729cb8; */
+  box-shadow: 3px 3px 24px #40b3ff,
+  -3px -3px 24px #d66dda;
 }
 #front, #back{
-  border: 3px solid black;
+  border: 3px solid #9eafce;
 }
 #content{
   overflow-x: inherit;
 }
 #card #front{
+  border-radius: 10px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 10px;
-  background-color: #213547;
+  background-color: #d6e1f7;
   position: absolute;
   height: 100%;
   width: 100%;
@@ -105,7 +107,8 @@ button:hover {
 
 #card #back{
   border-radius: 10px;
-  background-color: #46627a;
+
+  background-color: #d6e1f7;
   height: 100%;
   width: 100%;
   position: absolute;

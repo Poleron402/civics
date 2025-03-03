@@ -55,7 +55,7 @@ const Card: React.FC<ScoreProps> = ({score, setScore, question, questionCounter,
                     {!tempHidden &&
                     <div id='content' className="flex justify-center items-center h-full">
 
-                    <ol className="flex-col justify-center items-center text-l p-10">
+                    <ol className="flex-col justify-center items-center text-xl p-10">
                         {question[questionCounter].answers.map((answ, ind)=>
                             <li id={`answer-${ind}`} className="text-center">{answ}</li>
                         )}
